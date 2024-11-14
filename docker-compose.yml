@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  game-api:
+    build:
+      context: ./RockPaperScissorsLizardSpock.WebApi  # Path to the folder containing the Dockerfile
+      dockerfile: Dockerfile
+      args:
+        - BUILD_CONFIGURATION=Release
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    networks:
+      - game-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/choices"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+networks:
+  game-network:
+    driver: bridge
