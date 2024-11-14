@@ -27,7 +27,7 @@ namespace RockPaperScissorsLizardSpock.WebApi.Controllers.Accounts
         [AllowAnonymous]
         [HttpPost]
         [Route("login")]
-        public async Task<ActionResult> Login([FromBody] LoginRequestDTO request)
+        public async Task<ActionResult<LoginResponseDTO>> Login([FromBody] LoginRequestDTO request)
         {
             return Ok(await _mediator.Send(new LoginCommand { UserName = request.UserName, Password = request.Password}));
         }
@@ -36,13 +36,13 @@ namespace RockPaperScissorsLizardSpock.WebApi.Controllers.Accounts
         /// Registers a new user with the provided credentials.
         /// </summary>
         /// <param name="request">Contains the username and password of the user to be registered.</param>
-        /// <returns>A response containing a JWT token for the newly registered user.</returns>
+        /// <returns>A response containing the new user's ID and username if registration is successful.</returns>
         /// <response code="200">Returns the authentication token for the newly registered user.</response>
         /// <response code="400">Returns an error if registration fails due to invalid input or existing user.</response>
         [AllowAnonymous]
         [HttpPost]
         [Route("register")]
-        public async Task<ActionResult<LoginResponseDTO>> Register([FromBody] RegisterRequestDTO request)
+        public async Task<ActionResult<UserResponseDTO>> Register([FromBody] RegisterRequestDTO request)
         {
             return Ok(await _mediator.Send(new RegisterCommand { UserName = request.UserName, Password = request.Password }));
         }
