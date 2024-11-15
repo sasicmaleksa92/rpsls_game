@@ -35,26 +35,23 @@ dotnet watch run
 You'll find the Angular code for the project in the `ClientApp` folder.
 
 To run the project perform the following steps:
-
 1. Install Node.js 20 or higher - https://nodejs.org
-
 2. Install ASP.NET core 8 - https://dot.net
-
 3. Install the Angular CLI:
-
     `npm install -g @angular/cli`
-
 4. Open a command prompt and `cd` into the project's `ClientApp` folder
-
 5. Run `npm install`
-
-6. Run `npm run start` to start the Angular build process and the application. 
-
+6. Run `npm run start` to start the Angular build process and the application.
 8. Visit http://localhost:4200 in the browser
 
+## Docker support - Running the Project - WebApi
+1. [Install Docker Compose](https://docs.docker.com/compose/install/)
+2. Clone this repository
+3. Run all containers with `docker-compose up -d`
+4. Refresh `localhost:8080` a few times in your web browser to generate some traces. 
 
 
-A few additional notes:
+## Additional notes:
 
 * CORS is enabled in the `Startup.cs` file. You'll more than likely want to lock-down some of the settings for it though.
 * The frontend part, especially one for the register/login activities is created just to allow testing the multiple users uses cases and can be better implemented
