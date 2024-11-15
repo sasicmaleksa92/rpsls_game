@@ -6,7 +6,7 @@ The application has the following functionalities and uses cases:
 #### Guest and Registered User Access:
 When a player first accesses the application, they have the option to continue as a guest or register and log in. Once successfully logged in, the player's username will appear on the scoreboard, along with a record of all previously played rounds and scores.
 
-![Alt text](/Images/Screenshot-Guest.png?raw=true "Optional Title")
+![Alt text](/ClientApp/Images/Screenshot-Guests.png?raw=true "Optional Title")
 #### Round Records and Scoring:
 All completed rounds are displayed in a table, with the most recent round listed at the top. The scores are calculated and reflected on the scoreboard.
 #### Guest User Limitations:
@@ -14,7 +14,7 @@ For guest users, the rounds played are only active during the current session an
 #### Persistent Data for Registered Users:
 For logged-in users, both played rounds and scores are stored in the database. This ensures the data remains intact even if the page is refreshed or the user logs out.
 
-![Alt text](/Images/Screenshot-Player.png?raw=true "Optional Title")
+![Alt text](/ClientApp/Images/Screenshot-Player.png?raw=true "Optional Title")
 #### Score Reset Option:
 Both guest and registered users have the option to reset their scores. This action clears all previously played rounds and resets the score to zero.
 
