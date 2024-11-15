@@ -1,0 +1,51 @@
+<mat-card style="margin-top: 10px;" appearance="outlined">
+    <mat-card-header>
+        <mat-card-title>
+            <h2>Score board - {{userName}}</h2>
+            <div style="margin-top: 5px;" matBadge="{{numberOfWins}}" matBadgeSize="large" class="demo-section">Wins</div>
+            <mat-divider></mat-divider>
+            <div style="margin-top: 5px;" matBadge="{{numberOfLosts}}" matBadgeSize="large" class="demo-section">Losses</div>
+            <mat-divider></mat-divider>
+            <div style="margin-top: 5px;" matBadge="{{numberOfTies}}" matBadgeSize="large" class="demo-section">Ties</div>
+            <mat-divider></mat-divider>
+            <div class="example-button-row">
+                <button mat-button (click)="resetScoreborad()" mat-flat-button style="margin-top: 10px;">Reset score</button>
+              </div>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content style="margin-top: 15px;">
+        <div class="list-container">
+            <div class="table-panel fill">
+                <table class="game-history-table" mat-table [dataSource]="store.all$" matSort matSortActive="id" matSortDirection="desc"
+                    matSortDisableClear class="mat-elevation-z8">
+
+                    <ng-container matColumnDef="playerChoiceName">
+                        <th mat-header-cell *matHeaderCellDef> Your choice </th>
+                        <td mat-cell *matCellDef="let element"> {{element.playerChoiceName}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="computerChoiceName">
+                        <th mat-header-cell *matHeaderCellDef> Computer choice</th>
+                        <td mat-cell *matCellDef="let element"> {{element.computerChoiceName}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="results">
+                        <th mat-header-cell *matHeaderCellDef> Result </th>
+                        <td mat-cell *matCellDef="let element"> {{element.results}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="time">
+                        <th mat-header-cell *matHeaderCellDef> Time </th>
+                        <td mat-cell *matCellDef="let element"> {{element.time}} </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    <tr class="mat-row" *matNoDataRow>
+                        <td class="mat-cell" [colSpan]="displayedColumns.length">No games played</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

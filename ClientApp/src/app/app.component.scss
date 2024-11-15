@@ -1,0 +1,5 @@
+.list-container {
+    padding: 0 16px;
+    height: calc(100% - 96px); // 80px is the height of the toolbar + 16px for bottom margin
+    max-height: calc(100% - 96px);
+  }

@@ -1,0 +1,1 @@
+export type EntityWithRequiredId<T> = T & { id: string };

@@ -1,0 +1,28 @@
+<div class="list-container">
+  <div class="table-panel fill">
+    <mat-card appearance="outlined">
+      <mat-card-content>
+
+        <div *ngIf="!isLoggedIn"  class="example-button-row div_r">
+          <button mat-button (click)="openRegisterDialog()" mat-flat-button style="margin-top: 10px;">Register</button>
+          <button mat-button (click)="openLoginDialog()" mat-flat-button style="margin-top: 10px;">Login</button>
+        </div>
+        <div *ngIf="isLoggedIn" class="example-button-row div_r">
+          <button mat-button (click)="logout()" mat-flat-button style="margin-top: 10px;">Logout</button>
+        </div>
+
+        <mat-button-toggle-group  [(ngModel)]="playerChoiceValue" style="margin-top: 10px;" name="fontStyle" aria-label="Font Style">
+          <ng-container *ngFor="let gameChoice of gameChoices">
+          <mat-button-toggle value="{{gameChoice.id}}">{{gameChoice.name}}</mat-button-toggle>
+          </ng-container>
+        </mat-button-toggle-group>
+
+
+        <div class="example-button-row">
+          <button mat-button (click)="submit()" [disabled]="playDisabled()" mat-flat-button style="margin-top: 10px;">Play</button>
+        </div>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
