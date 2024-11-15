@@ -53,6 +53,6 @@ To run the project perform the following steps:
 
 ## Additional notes:
 
-* CORS is enabled in the `Startup.cs` file. You'll more than likely want to lock-down some of the settings for it though.
-* The frontend part, especially one for the register/login activities is created just to allow testing the multiple users uses cases and can be better implemented
+* Frontend components, especially those handling registration, login activities and response messages and error handlings, were developed primarily to facilitate testing of multiple user cases and could be implemented more efficiently.
+* The backend implementation for registration and login activities was created solely for testing purposes and may contain potential security vulnerabilities.
 
