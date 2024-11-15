@@ -1,20 +1,24 @@
-version: '3.8'
+version: '3'
 
 services:
-  game-api:
+  webapi:
+    image: ${DOCKER_REGISTRY-}webapi
     build:
-      context: ./RockPaperScissorsLizardSpock.WebApi  # Path to the folder containing the Dockerfile
-      dockerfile: Dockerfile
-      args:
-        - BUILD_CONFIGURATION=Release
+      context: .
+      dockerfile: RockPaperScissorsLizardSpock.WebApi/Dockerfile
     ports:
-      - "8080:8080"
-      - "8081:8081"
+      - 8080:80
     environment:
-      - ASPNETCORE_ENVIRONMENT=Production
-    networks:
-      - game-network
-
-networks:
-  game-network:
-    driver: bridge
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - ConnectionStrings__DefaultConnection=Server=mssql;database=rpsls_db;User Id=sa;Password=zhBg8LjXFAqWasTA
+      
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    container_name: mssql
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=zhBg8LjXFAqWasTA
+    ports:
+      - 1434:1434
+  

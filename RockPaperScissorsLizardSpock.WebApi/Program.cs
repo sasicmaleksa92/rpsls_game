@@ -41,6 +41,7 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+app.Logger.LogInformation("ConnectionStrings: " + app.Configuration["ConnectionStrings:DefaultConnection"]);
 //EF Core migrations
 using (var serviceScope = app.Services.CreateScope())
 {
